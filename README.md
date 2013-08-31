@@ -98,7 +98,7 @@ Total 5 (delta 0), reused 0 (delta 0)
 -----> Fetching custom buildpack... done
 -----> Perloku app detected
 -----> Vendoring Perl
-       Using Perl 5.16.3
+       Using Perl 5.16.2
 -----> Installing dependencies
        --> Working on /tmp/build_19tm6pb8ch1qa
        Configuring /tmp/build_19tm6pb8ch1qa ... OK
