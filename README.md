@@ -80,7 +80,7 @@ git add .
 git update-index --chmod=+x Perloku (only if using Windows)
 git update-index --chmod=+x app.pl (only if using Windows)
 git commit -m "Initial version"
-heroku create -s cedar --buildpack http://github.com/judofyr/perloku.git
+heroku create -s cedar --buildpack https://github.com/valchonedelchev/perloku.git
 git push heroku master
 ```
 
