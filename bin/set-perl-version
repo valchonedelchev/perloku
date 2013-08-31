@@ -1,0 +1,23 @@
+#!/bin/bash
+
+NEWPVER=$1
+PATHTOHERE=$(dirname "$0")
+CURRPV=$(grep PERL_VERSION= $PATHTOHERE/compile | sed 's/^PERL_VERSION="//; s/"$//');
+
+if [ -z "$NEWPVER" ]; then
+  echo "Usage:"
+  echo "  $0 new.perl.version"
+  echo
+  echo "Current Perl version is $CURRPV"
+  exit
+fi
+
+if [ "$NEWPVER" == "$CURRPV" ]; then
+  echo "Current Perl version is the same as requested $NEWPVER"
+  exit;
+fi
+
+echo "Switching from $CURRPV to $NEWPVER"
+sed -i "s/$CURRPV/$NEWPVER/" "$PATHTOHERE/../README.md"
+sed -i "s/$CURRPV/$NEWPVER/" "$PATHTOHERE/../support/build_perl"
+sed -i "s/$CURRPV/$NEWPVER/" "$PATHTOHERE/compile"
