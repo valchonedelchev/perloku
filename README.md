@@ -5,51 +5,18 @@ Deploy Perl applications in seconds.
 
 ## Step 1
 
-Write an app:
+Generate app:
 
-```perl
-#!/usr/bin/env perl
-use Mojolicious::Lite;
-
-get '/' => sub {
-  my $self = shift;
-  $self->render('index');
-};
-
-app->start;
-__DATA__
-
-@@ index.html.ep
-% layout 'default';
-% title 'Welcome';
-Welcome to the Mojolicious real-time web framework!
-
-@@ layouts/default.html.ep
-<!DOCTYPE html>
-<html>
-  <head><title><%= title %></title></head>
-  <body><%= content %></body>
-</html>
+```
+mojo generate lite_app app.pl
 ```
 
 ## Step 2
 
 Create a Makefile.PL with your dependencies:
 
-```perl
-use strict;
-use warnings;
-
-use ExtUtils::MakeMaker;
-
-WriteMakefile(
-  NAME         => 'app.pl',
-  VERSION      => '1.0',
-  AUTHOR       => 'Magnus Holm <judofyr@gmail.com>',
-  EXE_FILES    => ['app.pl'],
-  PREREQ_PM    => {'Mojolicious' => '2.0'},
-  test         => {TESTS => 't/*.t'}
-);
+```
+mojo generate makefile
 ```
 
 Alternately, you may create a
@@ -57,7 +24,7 @@ Alternately, you may create a
 that lists dependencies instead:
 
 ```
-requires 'Mojolicious', '2.0';
+requires 'Mojolicious';
 ```
 
 ## Step 3
