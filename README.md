@@ -33,16 +33,9 @@ Create an executable file called Perloku which runs a server on the port
 given as an enviroment variable:
 
 ```sh
-#!/bin/sh
-./app.pl daemon --listen http://*:$PORT
-```
-
-
-Test that you can start the server:
-
-```sh
+echo '#!/bin/sh' > Perloku
+echo './app.pl daemon --listen http://*:$PORT' >> Perloku
 chmod +x Perloku
-PORT=3000 ./Perloku
 ```
 
 ## Step 4
