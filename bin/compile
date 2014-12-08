@@ -7,6 +7,19 @@ indent() {
 BUILD_DIR=$1
 CACHE_DIR=$2
 
+if [ -f "$BUILD_DIR/before_hook" ]
+	then
+	echo "Found before_hook file."
+	if [ -x $BUILD_DIR/before_hook ]
+		then
+		echo "Calling: before_hook $1 $2"
+		$BUILD_DIR/before_hook $1 $2
+		echo "Finished before_hook"
+	else
+		echo "FAILED! before_hook file should be executable."
+	fi
+fi
+
 PERL_VERSION="5.18.1"
 PERL_PACKAGE="perloku.s3.amazonaws.com/perl-$PERL_VERSION.tgz"
 
@@ -35,4 +48,3 @@ if [ -f $BUILD_DIR/Makefile.PL ] || [ -f $BUILD_DIR/cpanfile ]; then
 
   echo "Dependencies installed" | indent
 fi
-
