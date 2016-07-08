@@ -76,7 +76,8 @@ if [ -f $BUILD_DIR/Makefile.PL ] || [ -f $BUILD_DIR/cpanfile ]; then
   mkdir -p "$CACHE_DIR"
   $CPANM --notest --installdeps "$BUILD_DIR" 2>&1 | indent
 
-  cp -R "$CACHE_DEPS" "$VENDOR_DEPS"
+  cp -vR "$CACHE_DEPS" "$VENDOR_DEPS"
+
 
   echo "Dependencies installed" | indent
 fi
